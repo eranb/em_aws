@@ -29,7 +29,7 @@ Add the following to your aws.rb initializer:
     require 'aws-sdk'
     require 'aws/core/http/em_http_handler'
     AWS.config(
-    :http_handler => AWS::Http::EMHttpHandler.new(
+    :http_handler => AWS::Core::Http::EMHttpHandler.new(
          :proxy => { :host => '127.0.0.1',  # proxy address
             :port => 9000,                  # proxy port
             :type => :socks5 },
@@ -49,7 +49,7 @@ are created lazy, so pools grow until they meet the set pool size.
     require 'aws-sdk'
     require 'aws/core/http/em_http_handler'
     AWS.config(
-      :http_handler => AWS::Http::EMHttpHandler.new({
+      :http_handler => AWS::Core::Http::EMHttpHandler.new({
         :pool_size => 20,
         :inactivity_timeout => 0, # number of seconds to timeout stale connections in the pool,
         :never_block => true) # if we run out of connections, create a new one
